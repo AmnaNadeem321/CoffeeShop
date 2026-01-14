@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Livaan Coffee</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .review-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .review-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .stats-section {
+            padding: 60px 20px;
+            background: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-color);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .reviews-section {
+            padding: 60px 20px;
+            background: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 3rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .review-info h3 {
+            margin: 0;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+        }
+
+        .review-rating {
+            color: #ffc107;
+            margin-top: 0.3rem;
+        }
+
+        .review-date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .review-text {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .add-review-section {
+            padding: 60px 20px;
+            background: var(--white);
+        }
+
+        .review-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            font-size: 2rem;
+        }
+
+        .star-rating i {
+            cursor: pointer;
+            color: #ddd;
+            transition: var(--transition);
+        }
+
+        .star-rating i:hover,
+        .star-rating i.active {
+            color: #ffc107;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .review-hero h1 {
+                font-size: 2rem;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/logo.jpg" alt="Livaan Logo" style="height: 50px; border-radius: 5px;">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="review.html" class="active">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="order-history.html">Orders</a></li>
+                <!-- Auth Links (shown when NOT logged in) -->
+                <li class="auth-links">
+                    <a href="login.html" class="btn-login">Login</a>
+                </li>
+                <li class="auth-links">
+                    <a href="signup.html" class="btn-signup">Sign Up</a>
+                </li>
+                <!-- Profile Link (shown when logged in) -->
+                <li class="profile-link">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                </li>
+                <li class="cart-link-li"><a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a></li>
+            </ul>
+            <a href="cart.html" class="cart-link mobile-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Review Hero -->
+    <section class="review-hero">
+        <h1>Customer Reviews</h1>
+        <p>See what our customers say about Livaan Coffee</p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-number">4.8</div>
+                <div class="stat-text">Average Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number">500+</div>
+                <div class="stat-text">Happy Customers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div class="stat-number">350+</div>
+                <div class="stat-text">Total Reviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-thumbs-up"></i>
+                </div>
+                <div class="stat-number">98%</div>
+                <div class="stat-text">Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">A</div>
+                    <div class="review-info">
+                        <h3>Ahmed Ali</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-date">2 days ago</div>
+                    </div>
+                </div>
+                <p class="review-text">Absolutely love Livaan! The coffee quality is outstanding, and the atmosphere is perfect for work or relaxation. Their Cappuccino is my favorite!</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">S</div>
+                    <div class="review-info">
+                        <h3>Sara Khan</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-date">5 days ago</div>
+                    </div>
+                </div>
+                <p class="review-text">Best coffee shop in town! The staff is friendly, service is quick, and the Latte art is amazing. Highly recommended for coffee lovers.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">M</div>
+                    <div class="review-info">
+                        <h3>Muhammad Hassan</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="review-date">1 week ago</div>
+                    </div>
+                </div>
+                <p class="review-text">Great coffee and delicious pastries. The ambiance is cozy and perfect for meetings. Will definitely come back again!</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">F</div>
+                    <div class="review-info">
+                        <h3>Fatima Malik</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-date">1 week ago</div>
+                    </div>
+                </div>
+                <p class="review-text">Livaan has become my go-to place for coffee! The quality is consistently excellent, and their sandwiches are delicious too.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">Z</div>
+                    <div class="review-info">
+                        <h3>Zain Rasheed</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-date">2 weeks ago</div>
+                    </div>
+                </div>
+                <p class="review-text">Perfect spot for studying! Free WiFi, comfortable seating, and amazing Mocha. The staff is very accommodating.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">N</div>
+                    <div class="review-info">
+                        <h3>Nida Iqbal</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="review-date">3 weeks ago</div>
+                    </div>
+                </div>
+                <p class="review-text">Lovely place with great coffee! The prices are reasonable and the service is prompt. Only wish they had more seating space.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Review Section -->
+    <section class="add-review-section">
+        <h2 class="section-title">Share Your Experience</h2>
+        <form class="review-form" id="reviewForm">
+            <div class="form-group">
+                <label for="reviewName">Your Name *</label>
+                <input type="text" id="reviewName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reviewEmail">Email Address *</label>
+                <input type="email" id="reviewEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label>Rating *</label>
+                <div class="star-rating" id="starRating">
+                    <i class="far fa-star" data-rating="1"></i>
+                    <i class="far fa-star" data-rating="2"></i>
+                    <i class="far fa-star" data-rating="3"></i>
+                    <i class="far fa-star" data-rating="4"></i>
+                    <i class="far fa-star" data-rating="5"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="reviewText">Your Review *</label>
+                <textarea id="reviewText" required placeholder="Share your experience with us..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Submit Review
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>Livan Coffee: Livaan - Where Aura Meets Taste.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>Email: support@livan.com</p>
+                <p>Phone: +92 300 1234567</p>
+
+                <div class="footer-social">
+                    <a href="https://facebook.com/Livaan_official" target="_blank"><i class="fab fa-facebook-f"></i> @livaan_official</a>
+                    <a href="https://instagram.com/Livaan_official" target="_blank"><i class="fab fa-instagram"></i> @livaan_official</a>
+                    <a href="https://twitter.com/Livaan_official" target="_blank"><i class="fab fa-twitter"></i> @livaan_official</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Livaan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Star Rating Functionality
+        const stars = document.querySelectorAll('.star-rating i');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = this.dataset.rating;
+                updateStars(selectedRating);
+            });
+
+            star.addEventListener('mouseenter', function() {
+                updateStars(this.dataset.rating);
+            });
+        });
+
+        document.getElementById('starRating').addEventListener('mouseleave', function() {
+            updateStars(selectedRating);
+        });
+
+        function updateStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('far');
+                    star.classList.add('fas', 'active');
+                } else {
+                    star.classList.remove('fas', 'active');
+                    star.classList.add('far');
+                }
+            });
+        }
+
+        // Form Submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (selectedRating === 0) {
+                alert('Please select a rating!');
+                return;
+            }
+
+            const name = document.getElementById('reviewName').value;
+            const email = document.getElementById('reviewEmail').value;
+            const text = document.getElementById('reviewText').value;
+
+            // Show success message
+            alert(`Thank you ${name}! Your review has been submitted.`);
+            
+            // Reset form
+            this.reset();
+            selectedRating = 0;
+            updateStars(0);
+        });
+    </script>
+</body>
+</html>
