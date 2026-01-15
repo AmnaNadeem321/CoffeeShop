@@ -5,7 +5,7 @@ const menuProducts = [
         id: 1,
         name: "Espresso",
         description: "Strong and bold espresso shot",
-        price: 299,
+        price: 700,
         category: "hot",
         image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -14,7 +14,7 @@ const menuProducts = [
         id: 2,
         name: "Cappuccino",
         description: "Classic cappuccino with foam art",
-        price: 399,
+        price: 750,
         category: "hot",
         image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -23,7 +23,7 @@ const menuProducts = [
         id: 3,
         name: "Latte",
         description: "Smooth and creamy latte",
-        price: 449,
+        price: 850,
         category: "hot",
         image: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -32,7 +32,7 @@ const menuProducts = [
         id: 4,
         name: "Americano",
         description: "Espresso with hot water",
-        price: 349,
+        price: 980,
         category: "hot",
         image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -41,7 +41,7 @@ const menuProducts = [
         id: 5,
         name: "Macchiato",
         description: "Espresso with a dollop of foam",
-        price: 379,
+        price: 1050,
         category: "hot",
         image: "https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -60,7 +60,7 @@ const menuProducts = [
         id: 7,
         name: "Cold Brew",
         description: "Smooth cold-brewed coffee",
-        price: 449,
+        price: 950,
         category: "cold",
         image: "https://images.unsplash.com/photo-1517959105821-eaf2591984ca?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -69,16 +69,16 @@ const menuProducts = [
         id: 8,
         name: "Iced Latte",
         description: "Cold latte with milk and ice",
-        price: 479,
+        price: 900,
         category: "cold",
         image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400",
         sizes: ["Small", "Medium", "Large"]
     },
     {
         id: 9,
-        name: "Frappuccino",
+        name: "Frap Latte",
         description: "Blended ice coffee drink",
-        price: 549,
+        price: 1150,
         category: "cold",
         image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -88,7 +88,7 @@ const menuProducts = [
         id: 10,
         name: "Mocha",
         description: "Rich chocolate coffee blend",
-        price: 499,
+        price: 900,
         category: "special",
         image: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -97,7 +97,7 @@ const menuProducts = [
         id: 11,
         name: "Caramel Macchiato",
         description: "Espresso with vanilla and caramel",
-        price: 529,
+        price: 1050,
         category: "special",
         image: "https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -115,7 +115,7 @@ const menuProducts = [
         id: 13,
         name: "Vanilla Latte",
         description: "Latte with vanilla syrup",
-        price: 499,
+        price: 980,
         category: "special",
         image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400",
         sizes: ["Small", "Medium", "Large"]
@@ -124,7 +124,7 @@ const menuProducts = [
         id: 14,
         name: "Affogato",
         description: "Espresso over vanilla ice cream",
-        price: 599,
+        price: 1200,
         category: "special",
         image: "https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=400",
         sizes: ["Regular"]
